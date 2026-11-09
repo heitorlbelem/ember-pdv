@@ -1,0 +1,53 @@
+{
+  "expo": {
+    "name": "Ember PDV",
+    "slug": "ember-pdv",
+    "description": "Cliente mobile do sistema Ember PDV",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/app-icon.png",
+    "scheme": "ember-pdv",
+    "userInterfaceStyle": "automatic",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "expo-dev-client",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#FFF4E8",
+          "image": "./assets/app-icon.png",
+          "imageWidth": 220,
+          "resizeMode": "contain"
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "ios": {
+      "bundleIdentifier": "com.emberpdv.mobile",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsLocalNetworking": true
+        }
+      }
+    },
+    "android": {
+      "package": "com.emberpdv.mobile",
+      "adaptiveIcon": {
+        "backgroundColor": "#FFF4E8",
+        "foregroundImage": "./assets/app-icon.png"
+      },
+      "predictiveBackGestureEnabled": false
+    }
+  }
+}
