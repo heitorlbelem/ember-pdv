@@ -1,0 +1,32 @@
+{
+  "name": "ember-pdv-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "API REST do Ember PDV",
+  "type": "module",
+  "packageManager": "npm@10.9.9",
+  "engines": {
+    "node": "22.23.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "npm run services:up && npm run migrations:up && tsx watch src/main.ts",
+    "services:up": "docker compose --env-file .env.local -f docker/compose.yml -p ember-pdv up -d --wait postgres",
+    "services:down": "docker compose --env-file .env.local -f docker/compose.yml -p ember-pdv down",
+    "migrations:up": "node-pg-migrate --envPath .env.local -m migrations up",
+    "migrations:create": "node-pg-migrate --envPath .env.local -m migrations create"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "fastify": "5.12.8",
+    "pg": "^8.23.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/pg": "^8.15.5",
+    "node-pg-migrate": "^9.0.0",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  }
+}
