@@ -15,6 +15,8 @@
 
 ## Convenções de implementação
 
+- Todos os agentes devem ler e seguir a regra [Padrões de escrita de código](.agents/rules/code-standards.md)
+  em toda sessão que criar ou alterar código.
 - O código TypeScript usa modo strict e módulos ESM; imports locais devem usar
   a extensão `.js`.
 - Artefatos gerados não devem ser editados manualmente.
