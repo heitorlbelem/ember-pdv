@@ -53,6 +53,28 @@ npm run build
 node dist/main.js
 ```
 
+## Deploy no Fly.io
+
+O backend inclui um `Dockerfile` multi-stage e uma configuração em
+`fly.toml`. Execute os comandos a partir deste diretório:
+
+```bash
+fly auth login
+fly launch --no-deploy
+```
+
+Se necessário, altere o valor de `app` em `fly.toml` para um nome disponível na
+sua conta. Antes do primeiro deploy, configure a URL do PostgreSQL como secret:
+
+```bash
+fly secrets set DATABASE_URL='postgresql://usuario:senha@host:5432/banco'
+fly deploy
+```
+
+O Fly encaminha HTTPS para a porta interna `3000` e usa `GET /health` como
+health check. Como esse endpoint também valida o PostgreSQL, a aplicação só é
+considerada saudável quando o banco estiver acessível.
+
 ## PostgreSQL local
 
 O banco roda no serviço `postgres` do Docker Compose, usando a imagem oficial
